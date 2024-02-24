@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { fontSans } from "../lib/fonts";
 import "./globals.css";
+import Sidebar from "@/components/sidebar";
+import Header from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`flex items-start justify-between ${fontSans.className}`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Sidebar />
+          <main className="flex flex-col items-start h-screen w-full">
+            <Header />
+            <div className="w-full h-[calc(100vh - 70px)]">
+              {children}
+            </div>
+          </main>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
