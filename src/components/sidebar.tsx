@@ -9,26 +9,23 @@ import {
   CreditCardIcon,
   DocumentIcon,
   RectangleGroupIcon,
-  UserIcon
 } from '@heroicons/react/24/outline'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useState } from 'react'
+import { Button } from './ui/button'
 
 
-const Sidebar = () => {
+const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
 
   const pathname = usePathname()
+  const router = useRouter()
 
   const menuItems = [
     {
       name: 'Dashboard',
       icon: RectangleGroupIcon,
       href: '/',
-    },
-    {
-      name: 'Profile',
-      icon: UserIcon,
-      href: '/profile',
     },
     {
       name: 'Billing',
@@ -58,30 +55,44 @@ const Sidebar = () => {
   ]
 
   return (
-    <div className='max-md:hidden flex flex-col w-[300px] min-w-[300px] h-screen min-h-screen border-r p-4 gap-4'>
+    <div className='max-md:hidden flex flex-col w-full h-screen min-h-screen p-4 gap-4
+      duration-300 transition ease-in-out'>
       <div className="flex">
-        <UserItem />
+        <UserItem collapsed={collapsed} />
       </div>
-      <div className="flex flex-col grow gap-1">
+      <div className="flex flex-col grow gap-1 px-0.5 text-secondary-foreground">
         {menuItems.map((item, index) => (
-          <Link
-            href={item.href}
-            key={index}
-            className={
-              cn("flex p-2.5 px-4 rounded-lg text-sm w-full justify-start",
-              pathname === item.href
-                ? "bg-primary dark:text-primary-background text-primary-foreground dark:bg-primary-background"
-                : "hover:bg-muted-foreground/10"
-            )}
-          >
-            <div className="flex">
-              <item.icon className="h-5 w-5 mr-2" />
-              {item.name}
-            </div>
-          </Link>
+          <>
+          {collapsed ? (
+            <Link
+              key={index}
+              href={item.href}
+              className={cn(
+                'p-3 flex items-center justify-center hover:bg-secondary rounded-lg cursor-pointer',
+                pathname === item.href && ('bg-primary text-primary-foreground hover:bg-primary/75 shadow')
+              )}
+            >
+              <item.icon className="h-5 w-5 min-h-5 min-w-5" />
+            </Link>
+            ) : (
+            <Link
+              key={index}
+              href={item.href}
+              className={cn(
+                'p-3 flex items-center justify-start hover:bg-secondary rounded-lg cursor-pointer',
+                pathname === item.href && ('bg-primary text-primary-foreground hover:bg-primary/75')
+              )}
+            >
+              <div className="flex">
+                <item.icon className="h-5 w-5" />
+                <p className={cn(`block ml-2 text-sm`)}>{item.name}</p>
+              </div>
+            </Link>
+          )}
+          </>
         ))}
       </div>
-      <div className="flex">Settings/Notifications</div>
+      <div className={cn("flex", collapsed && 'hidden')}>Settings/Notifications</div>
     </div>
   )
 }

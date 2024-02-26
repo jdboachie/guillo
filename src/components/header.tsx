@@ -12,7 +12,7 @@ import { Command } from "./command-dialog";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
 import Link from 'next/link'
-import { fontWeird } from "@/lib/fonts";
+import { fontSerif } from "@/lib/fonts";
 
 
 export default function Header() {
@@ -37,9 +37,9 @@ export default function Header() {
     }
   ])
 
-  return <div className="flex w-full h-[70px] justify-between gap-4 p-4 border-b">
-    <div className={`px-2 text-3xl ${fontWeird.className}`}>
-
+  return <div className="flex w-full h-[100px] justify-between gap-4 p-4 border-b">
+    <div className={`px-2 text-3xl ${fontSerif.className}`}>
+      Talent
     </div>
     <div className="flex items-center justify-end gap-2">
       <Command />

@@ -4,6 +4,12 @@ import "./globals.css";
 import Sidebar from "@/components/sidebar";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider"
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
+
 
 
 export const metadata: Metadata = {
@@ -25,13 +31,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Sidebar />
-          <main className="flex flex-col items-start h-screen w-full">
-            <Header />
-            <div className="w-full h-[calc(100vh - 70px)]">
-              {children}
-            </div>
-          </main>
+          {children}
         </ThemeProvider>
       </body>
     </html>

@@ -1,12 +1,42 @@
-import BumpCard from "@/components/cards/General";
-import { ScrollArea } from "@/components/ui/scroll-area";
+'use client'
+
+import Sidebar from "@/components/sidebar";
+import Header from "@/components/header";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
+import Dashboard from "@/components/dashboard";
+import { useState } from 'react'
+
 
 export default function Home() {
+
+  const [collapsed, setCollapsed] = useState(false)
+
   return (
-    <ScrollArea className="p-4 w-full h-[calc(100vh-70px)]">
-      <main className="grid max-2xl:grid-cols-1 grid-cols-2 gap-4">
-        <BumpCard />
-      </main>
-    </ScrollArea>
+    <ResizablePanelGroup direction="horizontal">
+      <ResizablePanel
+        collapsible
+        defaultSize={20}
+        collapsedSize={6}
+        minSize={12}
+        maxSize={20}
+        onCollapse={() => setCollapsed(true)}
+        onExpand={() => setCollapsed(false)}
+      >
+        <Sidebar collapsed={collapsed} />
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={80}>
+        <main className="flex flex-col items-start h-screen w-full">
+          <Header />
+          <div className="w-full h-[calc(100vh - 70px)]">
+            <Dashboard />
+          </div>
+        </main>
+      </ResizablePanel>
+    </ResizablePanelGroup>
   );
 }

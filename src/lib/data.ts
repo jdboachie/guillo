@@ -1,4 +1,4 @@
-export const getData = () => {
+export const getBumpChartData = () => {
   return [
     {
       "id": "Serie 1",
@@ -301,4 +301,23 @@ export const getData = () => {
       ]
     }
   ]
+}
+
+export const getCalendarData = () => {
+  const data = []
+  const startDate = new Date('2022-01-01')
+  const endDate = new Date('2023-03-12')
+
+  while (startDate <= endDate) {
+    const value = Math.floor(Math.random() * 201)
+    const formattedDate = startDate.toISOString().split('T')[0]
+
+    data.push({
+      "value": value,
+      "day": formattedDate
+    })
+
+    startDate.setDate(startDate.getDate() + 1)
+  }
+  return data
 }

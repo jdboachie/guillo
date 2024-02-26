@@ -8,6 +8,7 @@ import {
   Cog8ToothIcon,
   FaceSmileIcon,
   UserIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline"
 
 import {
@@ -41,9 +42,12 @@ export function Command() {
   return (
     <>
       <div className="text-sm flex text-muted-foreground">
-        <div className="w-60 border p-2 rounded-lg flex justify-between" onClick={()=>{setOpen(!open)}} >
-          <p className="text-neutral-500">Search commands...</p>
-          <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+        <div className="w-80 border p-2 rounded-lg flex justify-between" onClick={()=>{setOpen(!open)}} >
+          <div className="flex gap-2">
+            <MagnifyingGlassIcon className="w-5 h-5 p-0.5" />
+            <p className="text-neutral-500">Search commands...</p>
+          </div>
+          <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded-lg border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
             <span className="text-xs">⌘</span>J
           </kbd>
         </div>

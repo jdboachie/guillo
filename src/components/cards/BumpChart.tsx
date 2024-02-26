@@ -1,12 +1,11 @@
 'use client'
 
-import { getData } from '@/lib/data'
+import { getBumpChartData } from '@/lib/data'
 import { ResponsiveBump } from '@nivo/bump'
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -14,12 +13,12 @@ import {
 
 const BumpGraph = () => {
 
-  const data = getData()
+  const data = getBumpChartData()
 
   return (
     <ResponsiveBump
       data={data}
-      colors={{ scheme: 'greens' }}
+      colors={{ scheme: 'spectral' }}
       lineWidth={3}
       activeLineWidth={6}
       inactiveLineWidth={3}
@@ -64,9 +63,9 @@ const BumpGraph = () => {
   )
 }
 
-export default function BumpCard ({className}: {className?: string}) {
+export default function BumpCard () {
   return (
-    <Card className={`w-full ${className}`}>
+    <Card className={`w-full`}>
       <CardHeader>
         <CardTitle>This year</CardTitle>
         <CardDescription>Yearly sale results</CardDescription>
