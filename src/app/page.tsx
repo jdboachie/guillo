@@ -9,24 +9,34 @@ import {
 } from "@/components/ui/resizable"
 import Dashboard from "@/components/dashboard";
 import { useState } from 'react'
+import { cn } from '@/lib/utils'
 
 
 export default function Home() {
 
-  const [collapsed, setCollapsed] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
-    <ResizablePanelGroup direction="horizontal">
+    <ResizablePanelGroup
+      direction="horizontal"
+      className="h-full w-full items-stretch"
+    >
       <ResizablePanel
         collapsible
         defaultSize={20}
         collapsedSize={6}
-        minSize={12}
+        minSize={15}
         maxSize={20}
-        onCollapse={() => setCollapsed(true)}
-        onExpand={() => setCollapsed(false)}
+        onCollapse={() => {
+          setIsCollapsed(true)
+          document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
+            isCollapsed
+          )}`;
+        }}
+        onExpand={() => setIsCollapsed(false)}
+        className={cn(isCollapsed && "min-w-[50px] transition-all duration-300 ease-in-out")}
       >
-        <Sidebar collapsed={collapsed} />
+        <Sidebar collapsed={isCollapsed} />
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={80}>
