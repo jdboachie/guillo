@@ -1724,10 +1724,10 @@ export default function LineChart () {
   return (
     <Card className={`w-full`}>
       <CardHeader>
-        <CardTitle>This year</CardTitle>
-        {/* <CardDescription>Yearly sale results</CardDescription> */}
+        <CardTitle>Boxplot</CardTitle>
+        <CardDescription>Yearly sale results as boxplot</CardDescription>
       </CardHeader>
-      <CardContent className='w-full h-[350px]'>
+      <CardContent className='h-[350px] transform'>
         <MyResponsiveBoxPlot />
       </CardContent>
     </Card>

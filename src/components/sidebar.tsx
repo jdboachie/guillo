@@ -54,12 +54,14 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
   ]
 
   return (
-    <div className='max-md:hidden flex flex-col w-full h-screen min-h-screen p-4 gap-4
-      duration-300 transition ease-in-out'>
+    <div
+      data-collapsed={collapsed}
+      className='"group flex flex-col gap-4 p-4 data-[collapsed=true]:p-4'
+    >
       <div className="flex">
         <UserItem collapsed={collapsed} />
       </div>
-      <div className={cn("flex flex-col grow gap-1 px-0.5 text-secondary-foreground", collapsed && 'gap-2')}>
+      <div className={cn("flex flex-col grow gap-1 text-secondary-foreground", collapsed && 'gap-2 px-1')}>
         {menuItems.map((item, index) => (
           <>
           {collapsed ? (
@@ -67,8 +69,8 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
               key={index}
               href={item.href}
               className={cn(
-                'p-2 px-3 flex items-center justify-center hover:bg-secondary rounded-lg cursor-pointer',
-                pathname === item.href && ('bg-secondary text-primary hover:bg-secondary/75 border')
+                'p-2 flex items-center justify-center hover:bg-secondary rounded-lg cursor-pointer',
+                pathname === item.href && ('bg-secondary text-primary hover:bg-secondary/75')
               )}
             >
               <item.icon className="h-5 w-5" />
@@ -78,12 +80,12 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
               key={index}
               href={item.href}
               className={cn(
-                'p-2 px-3 flex items-center justify-start hover:bg-secondary rounded-lg cursor-pointer',
-                pathname === item.href && ('bg-secondary text-primary hover:bg-secondary/75 border')
+                'p-2 flex items-center justify-start hover:bg-secondary rounded-lg cursor-pointer',
+                pathname === item.href && ('bg-secondary text-primary hover:bg-secondary/75')
               )}
             >
               <div className="flex">
-                <item.icon className="h-5 w-5" />
+                <item.icon className="h-5 w-5 mx-1" />
                 <p className={cn(`block ml-2 text-sm`)}>{item.name}</p>
               </div>
             </Link>
@@ -91,7 +93,7 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
           </>
         ))}
       </div>
-      <div className={cn("flex", collapsed && 'hidden')}>Settings/Notifications</div>
+      {/* <div className={cn("flex", collapsed && 'hidden')}>Settings/Notifications</div> */}
     </div>
   )
 }

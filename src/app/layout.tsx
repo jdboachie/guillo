@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`flex items-start justify-between ${fontSans.className}`}>
+      <body className={`flex h-screen w-screen items-start justify-between ${fontSans.className}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

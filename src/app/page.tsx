@@ -1,7 +1,6 @@
 'use client'
 
 import Sidebar from "@/components/sidebar";
-import Header from "@/components/header";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -10,6 +9,7 @@ import {
 import Dashboard from "@/components/dashboard";
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
+import Header from "@/components/header";
 
 
 export default function Home() {
@@ -20,11 +20,15 @@ export default function Home() {
     <ResizablePanelGroup
       direction="horizontal"
       className="h-full w-full items-stretch"
+      onLayout={(sizes: number[]) => {
+        document.cookie = `react-resizable-panels:layout=${JSON.stringify(
+          sizes
+        )}`
+      }}
     >
       <ResizablePanel
-        collapsible
-        defaultSize={20}
         collapsedSize={6}
+        collapsible={true}
         minSize={15}
         maxSize={20}
         onCollapse={() => {
@@ -34,19 +38,23 @@ export default function Home() {
           )}`;
         }}
         onExpand={() => setIsCollapsed(false)}
-        className={cn(isCollapsed && "min-w-[50px] transition-all duration-300 ease-in-out")}
+        className={cn("max-sm:hidden", isCollapsed && "min-w-[50px] transition-all duration-300 ease-in-out")}
       >
         <Sidebar collapsed={isCollapsed} />
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={80}>
-        <main className="flex flex-col items-start h-screen w-full">
-          <Header />
-          <div className="w-full h-[calc(100vh - 70px)]">
-            <Dashboard />
-          </div>
-        </main>
+      <ResizablePanel
+        defaultSize={80}
+      >
+        <Header />
+        <Dashboard />
       </ResizablePanel>
+      {/* <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={defaultLayout[2]} maxSize={defaultLayout[2]}>
+        <div className="w-full h-full">
+          <p>Right Panel</p>
+        </div>
+        </ResizablePanel> */}
     </ResizablePanelGroup>
   );
 }

@@ -37,7 +37,7 @@ export default function Header() {
     }
   ])
 
-  return <div className="flex w-full h-[100px] justify-between gap-4 p-4 border-b">
+  return <div className="flex h-[70px] justify-between gap-4 p-4 border-b">
     <div className={`px-2 text-3xl ${fontSerif.className}`}>
 
     </div>
