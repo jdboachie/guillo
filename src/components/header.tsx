@@ -39,7 +39,7 @@ export default function Header() {
 
   return <div className="flex w-full h-[100px] justify-between gap-4 p-4 border-b">
     <div className={`px-2 text-3xl ${fontSerif.className}`}>
-      
+
     </div>
     <div className="flex items-center justify-end gap-2">
       <Command />

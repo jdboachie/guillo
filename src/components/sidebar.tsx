@@ -12,8 +12,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { useState } from 'react'
-import { Button } from './ui/button'
+
 
 
 const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
@@ -60,7 +59,7 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
       <div className="flex">
         <UserItem collapsed={collapsed} />
       </div>
-      <div className="flex flex-col grow gap-1 px-0.5 text-secondary-foreground">
+      <div className={cn("flex flex-col grow gap-1 px-0.5 text-secondary-foreground", collapsed && 'gap-2')}>
         {menuItems.map((item, index) => (
           <>
           {collapsed ? (
@@ -68,19 +67,19 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
               key={index}
               href={item.href}
               className={cn(
-                'p-3 flex items-center justify-center hover:bg-secondary rounded-lg cursor-pointer',
-                pathname === item.href && ('bg-primary text-primary-foreground hover:bg-primary/75 shadow')
+                'p-2 px-3 flex items-center justify-center hover:bg-secondary rounded-lg cursor-pointer',
+                pathname === item.href && ('bg-secondary text-primary hover:bg-secondary/75 border')
               )}
             >
-              <item.icon className="h-5 w-5 min-h-5 min-w-5" />
+              <item.icon className="h-5 w-5" />
             </Link>
             ) : (
             <Link
               key={index}
               href={item.href}
               className={cn(
-                'p-3 flex items-center justify-start hover:bg-secondary rounded-lg cursor-pointer',
-                pathname === item.href && ('bg-primary text-primary-foreground hover:bg-primary/75')
+                'p-2 px-3 flex items-center justify-start hover:bg-secondary rounded-lg cursor-pointer',
+                pathname === item.href && ('bg-secondary text-primary hover:bg-secondary/75 border')
               )}
             >
               <div className="flex">

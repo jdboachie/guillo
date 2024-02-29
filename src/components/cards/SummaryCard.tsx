@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
+
 export default function SummaryCard({title, value}: {title: string, value: string}) {
   return (
     <Card className="w-full h-fit flex flex-col">
@@ -18,7 +19,7 @@ export default function SummaryCard({title, value}: {title: string, value: strin
         <CardDescription>{title} summary</CardDescription>
       </CardHeader>
       <CardContent className="grow justify-center items-center flex">
-        <p className="text-3xl text-center font-mono">{value}</p>
+        <p className="text-3xl text-center">{value}</p>
       </CardContent>
       {/* <CardFooter className="flex justify-between">
         <Button variant="outline">Cancel</Button>
