@@ -1,14 +1,14 @@
 'use client';
 
-import { cn } from '@/lib/utils'
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 
 export default function Home() {
 
-  useRouter().push('/dashboard')
-
   return (
-    <main>Landing page</main>
+    <main className="w-full h-full justify-center items-center font-mono">
+      <p className="">Landing page is under development</p>
+      <Link href={'/dashboard'}>Visit dashboard page</Link>
+    </main>
   );
 }
