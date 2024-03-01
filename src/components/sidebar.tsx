@@ -8,7 +8,7 @@ import {
   CreditCardIcon,
   DocumentIcon,
   HomeIcon,
-  HomeModernIcon,
+  GlobeAltIcon,
 } from '@heroicons/react/16/solid'
 import { Button } from "@/components/ui/button"
 import { usePathname, useRouter } from 'next/navigation'
@@ -29,27 +29,22 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
     {
       name: 'Billing',
       icon: CreditCardIcon,
-      href: '/billing',
+      href: '/dashboard/billing',
     },
-    // {
-    //   name: 'Notifications',
-    //   icon: BellIcon,
-    //   href: '/notifications',
-    // },
     {
       name: 'Calendar',
       icon: CalendarDaysIcon,
-      href: '/calendar',
+      href: '/dashboard/calendar',
     },
     {
       name: 'Documents',
       icon: DocumentIcon,
-      href: '/documents',
+      href: '/dashboard/documents',
     },
     {
       name: 'Settings',
       icon: Cog8ToothIcon,
-      href: '/settings',
+      href: '/dashboard/settings',
     },
   ]
 
@@ -60,12 +55,9 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
     >
       <Link
         href={'/'}
-        className={cn("text-4xl flex gap-4 p-4", collapsed && 'px-2')}
+        className={cn("p-4 ", collapsed && 'px-2 -ml-1')}
       >
-        <HomeModernIcon className='w-10 h-10' />
-        {
-          !collapsed && ('ALPHA')
-        }
+        <GlobeAltIcon className='w-10 h-10 rotate-45 border/dashboard' />
       </Link>
       <div className={cn("flex flex-col justify-center grow gap-1 text-secondary-foreground", collapsed && 'gap-2 px-1')}>
         {menuItems.map((item, index) => (
