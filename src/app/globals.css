@@ -60,6 +60,6 @@
   }
 
   .tapbounce {
-    @apply transition-transform active:scale-95 hover:scale-105 duration-300 ease-in-out;
+    @apply transition-transform active:scale-95 duration-300 ease-in-out;
   }
 }
