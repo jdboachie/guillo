@@ -13,6 +13,7 @@ import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
 import Link from 'next/link'
 import { fontSerif } from "@/lib/fonts";
+import { cn } from '@/lib/utils'
 
 
 export default function Header() {
@@ -37,7 +38,7 @@ export default function Header() {
     }
   ])
 
-  return <div className="flex h-[70px] justify-between gap-4 p-4 border-b">
+  return <div className={cn("flex m-4 rounded-lg h-[70px] justify-between gap-4 p-4 border")}>
     <div className={`px-2 text-3xl ${fontSerif.className}`}>
 
     </div>
@@ -51,7 +52,7 @@ export default function Header() {
             <BellIcon className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-[400px]">
+        <DropdownMenuContent align="end" className="w-[300px]">
           <div className="border-b mb-1">
             <p className="text-sm font-[500] p-2">Notifications</p>
           </div>
@@ -60,8 +61,8 @@ export default function Header() {
               <div className={`h-3 w-3 min-h-3 min-w-3 block rounded-full my-4 ${!item.read ? 'bg-green-500' : 'bg-neutral-200'}`}></div>
               <div>
                 <p className="text-xs text-neutral-500">{item.date}</p>
-                <p className="font-[500] grow">{item.title}</p>
-                <p className="font-[500] text-neutral-500">{item.desc}</p>
+                <p className="font-[500] text-sm grow">{item.title}</p>
+                <p className="text-xs text-neutral-500">{item.desc}</p>
               </div>
             </DropdownMenuItem>
           ))}

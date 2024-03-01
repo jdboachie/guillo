@@ -50,7 +50,7 @@ export default function CalendarCard () {
     <Card className={`w-full`}>
       <CardHeader>
         <CardTitle>This year</CardTitle>
-        {/* <CardDescription>Yearly sale results</CardDescription> */}
+        <CardDescription>Sales made per day</CardDescription>
       </CardHeader>
       <CardContent className='w-full h-[350px]'>
         <CalendarChart />

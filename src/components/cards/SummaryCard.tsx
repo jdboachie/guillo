@@ -13,13 +13,13 @@ import {
 
 export default function SummaryCard({title, value}: {title: string, value: string}) {
   return (
-    <Card className="w-full h-fit flex flex-col">
-      <CardHeader>
+    <Card className="w-full h-[150px] flex flex-col">
+      <CardHeader className="py-4">
         <CardTitle>{title}</CardTitle>
-        <CardDescription>{title} summary</CardDescription>
+        {/* <CardDescription>{title} summary</CardDescription> */}
       </CardHeader>
-      <CardContent className="grow justify-center items-center flex">
-        <p className="text-3xl text-center">{value}</p>
+      <CardContent className="flex grow justify-center items-end text-xl m-2 rounded-lg">
+        {value}
       </CardContent>
       {/* <CardFooter className="flex justify-between">
         <Button variant="outline">Cancel</Button>
