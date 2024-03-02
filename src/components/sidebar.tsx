@@ -61,7 +61,7 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
           <GlobeAltIcon className='w-10 h-10 rotate-45 border/dashboard' />
         </Link>
       </div>
-      <div className={cn("flex flex-col justify-center grow gap-1 p-4 text-secondary-foreground", collapsed && 'gap-2 px-1')}>
+      <div className={cn("flex flex-col justify-center grow gap-1 p-4 text-secondary-foreground", collapsed && 'gap-2 px-5')}>
         {menuItems.map((item, index) => (
           <>
           {collapsed ? (
