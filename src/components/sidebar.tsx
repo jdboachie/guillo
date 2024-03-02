@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import Image from 'next/image'
+import { Separator } from './ui/separator'
 
 
 const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
@@ -51,15 +51,17 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
   return (
     <div
       data-collapsed={collapsed}
-      className="flex flex-col h-full gap-4 p-4 max-xl:data-[collapsed=true]:px-2.5"
+      className="flex flex-col h-full gap-4 max-xl:data-[collapsed=true]:px-2.5"
     >
-      <Link
-        href={'/'}
-        className={cn("p-4 ", collapsed && 'px-2 -ml-1')}
-      >
-        <GlobeAltIcon className='w-10 h-10 rotate-45 border/dashboard' />
-      </Link>
-      <div className={cn("flex flex-col justify-center grow gap-1 text-secondary-foreground", collapsed && 'gap-2 px-1')}>
+      <div className="py-4 px-8">
+        <Link
+          href={'/'}
+          className={cn("p-4 ", collapsed && 'px-2 -ml-1')}
+          >
+          <GlobeAltIcon className='w-10 h-10 rotate-45 border/dashboard' />
+        </Link>
+      </div>
+      <div className={cn("flex flex-col justify-center grow gap-1 p-4 text-secondary-foreground", collapsed && 'gap-2 px-1')}>
         {menuItems.map((item, index) => (
           <>
           {collapsed ? (
@@ -104,8 +106,8 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
           </>
         ))}
       </div>
-      {/* <div className={cn("flex", collapsed && 'hidden')}>Settings/Notifications</div> */}
-      <div className="flex">
+      <Separator />
+      <div className="flex p-4">
         <UserItem collapsed={collapsed} />
       </div>
     </div>

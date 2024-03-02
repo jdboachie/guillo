@@ -31,7 +31,7 @@ const RandomAvatar = () => {
   });
 
   return (
-    <svg dangerouslySetInnerHTML={{ __html: avatar.toString()}} className="border min-w-12 min-h-12 w-12 h-12 rounded-full hover:border-primary" />
+    <svg dangerouslySetInnerHTML={{ __html: avatar.toString()}} className="border min-w-12 min-h-12 w-12 h-12 max-sm:w-8 max-sm:h-8 rounded-full" />
   )
 }
 
@@ -40,14 +40,18 @@ export function UserItem({collapsed}: {collapsed?:boolean}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className={cn('h-fit w-full', collapsed && "px-0 bg-transparent border-transparent w-fit shadow-none hover:bg-transparent")}>
-        <div className={
+        <Button variant="outline" className={cn(
+          'h-fit w-full',
+          "max-sm:p-0 max-sm:bg-transparent max-sm:border-transparent max-sm:rounded-full max-sm:w-8 max-sm:h-8 max-sm:shadow-none max-sm:hover:bg-transparent",
+          collapsed && "px-0 bg-transparent border-transparent w-fit h-fit shadow-none hover:bg-transparent"
+        )}>
+          <div className={
             cn(
               "bg-transparent w-full flex rounded-lg cursor-pointer items-center",
               collapsed && "px-0 bg-transparent border-transparent w-fit"
           )}>
             <RandomAvatar />
-            <div className={cn("flex flex-col text-sm p-1 px-2 overflow-clip text-start", collapsed && 'hidden')}>
+            <div className={cn("flex flex-col text-sm p-1 px-2 overflow-clip text-start max-sm:hidden", collapsed && 'hidden')}>
               <p className={`${fontSerif.className} font-bold truncate`}>Jude Boachie</p>
               <p className="text-neutral-500 truncate text-xs">jdboachie@gmail.com</p>
             </div>
