@@ -26,6 +26,7 @@ import Link from 'next/link'
 
 export default function NotificationView() {
   const [open, setOpen] = React.useState(false)
+  const [openDrawer, setOpenDrawer] = React.useState(false)
 
   const [notifications, setNotifications] = React.useState<any>([
     {
@@ -53,8 +54,8 @@ export default function NotificationView() {
 
   return (
     <>
-    <div className="w-full h-full max-lg:hidden">
-      <Drawer open={open} onOpenChange={setOpen}>
+    <div className="w-full h-full hidden max-sm:block">
+      <Drawer open={openDrawer} onOpenChange={setOpenDrawer}>
         <DrawerTrigger asChild>
           <Button className="relative" variant="outline" size="icon">
             <div className={`absolute -top-2 -right-1 h-3 w-3 rounded-full my-1 ${notifications.find((x: any) => x.read === true) ? 'bg-green-500' : 'bg-neutral-200'}`}></div>
@@ -94,7 +95,7 @@ export default function NotificationView() {
         </DrawerContent>
       </Drawer>
     </div>
-    <div className="w-full h-full lg:hidden">
+    <div className="w-full h-full block max-sm:hidden">
     <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button className="relative" variant="outline" size="icon">
