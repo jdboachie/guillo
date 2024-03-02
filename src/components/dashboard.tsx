@@ -9,7 +9,7 @@ import LineChart from "./cards/LineChart";
 const Dashboard = () => {
 
   return (
-    <ScrollArea className="h-[calc(100vh-100px)] mb-8">
+    <ScrollArea className="h-[calc(100vh-170px)] mb-8">
       <section className="flex flex-col w-full p-4">
         {/* <p className={`${fontSerif.className} text-xl py-4`}>Dashboard</p> */}
         <main className="flex flex-col gap-4 pb-4">

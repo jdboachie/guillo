@@ -216,7 +216,7 @@ export function DataTableDemo() {
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="max-w-sm max-lg:w-60"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

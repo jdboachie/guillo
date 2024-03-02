@@ -78,7 +78,7 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
                 )}
                 variant={pathname === item.href ? 'default': 'outline'}
                 size="icon">
-                <item.icon className="h-4 w-4" />
+                <item.icon className="min-h-4 min-w-4 h-4 w-4" />
               </Button>
             </Link>
             ) : (
@@ -97,7 +97,7 @@ const Sidebar = ({collapsed}: {collapsed?: boolean}) => {
                 )}
                variant={pathname === item.href ? 'default': 'outline'}
               >
-                <item.icon className="mr-2 h-4 w-4" /> {item.name}
+                <item.icon className="mr-2 min-h-4 min-w-4 h-4 w-4" /> <p className="truncate">{item.name}</p>
               </Button>
             </Link>
           )}

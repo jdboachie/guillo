@@ -47,7 +47,7 @@ export default function DashboardLayout({
         >
           <Sidebar collapsed={isCollapsed} />
         </ResizablePanel>
-        <ResizableHandle withHandle />
+        <ResizableHandle withHandle className="max-sm:hidden" />
         <ResizablePanel
           defaultSize={80}
         >
