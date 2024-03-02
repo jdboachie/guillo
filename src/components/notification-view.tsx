@@ -1,7 +1,6 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -27,7 +26,6 @@ import Link from 'next/link'
 
 export default function NotificationView() {
   const [open, setOpen] = React.useState(false)
-  const isDesktop = useMediaQuery("(min-width: 768px)")
 
   const [notifications, setNotifications] = React.useState<any>([
     {
@@ -51,9 +49,53 @@ export default function NotificationView() {
   ])
 
 
-  if (isDesktop) {
-    return (
-      <Dialog open={open} onOpenChange={setOpen}>
+
+
+  return (
+    <>
+    <div className="w-full h-full max-lg:hidden">
+      <Drawer open={open} onOpenChange={setOpen}>
+        <DrawerTrigger asChild>
+          <Button className="relative" variant="outline" size="icon">
+            <div className={`absolute -top-2 -right-1 h-3 w-3 rounded-full my-1 ${notifications.find((x: any) => x.read === true) ? 'bg-green-500' : 'bg-neutral-200'}`}></div>
+            <div className={`absolute -top-2 -right-1 h-3 w-3 rounded-full my-1 ${notifications.find((x: any) => x.read === true) ? 'bg-green-500 animate-ping' : 'bg-neutral-200'}`}></div>
+            <BellIcon className="h-4 w-4" />
+          </Button>
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader className="text-left">
+            <DrawerTitle>Notifications</DrawerTitle>
+            <DrawerDescription>
+              3 most recent notifications (edit this in settings)
+            </DrawerDescription>
+          </DrawerHeader>
+          <div className="w-full p-2">
+            {notifications.map((item: any, key: number) => (
+              <div key={key} className="py-2 px-3 cursor-pointer hover:bg-secondary transition flex items-start gap-2 rounded-lg">
+                <div className={`h-3 w-3 min-h-3 min-w-3 block rounded-full my-4 ${!item.read ? 'bg-green-500' : 'bg-neutral-200'}`}></div>
+                <div>
+                  <p className="text-xs text-neutral-500">{item.date}</p>
+                  <p className="font-[500] text-sm grow">{item.title}</p>
+                  <p className="text-xs text-neutral-500">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+            <Link href={'/notifications'} className="">
+              <div className="py-2 px-3 cursor-pointer hover:bg-secondary rounded-lg transition text-primary hover:underline hover:underline-offset-4">
+                  See all notifications
+              </div>
+            </Link>
+          </div>
+          <DrawerFooter className="pt-2">
+            <DrawerClose asChild>
+              <Button variant="outline">Close</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </div>
+    <div className="w-full h-full lg:hidden">
+    <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button className="relative" variant="outline" size="icon">
             <div className={`absolute -top-2 -right-1 h-3 w-3 rounded-full my-1 ${notifications.find((x: any) => x.read === true) ? 'bg-green-500' : 'bg-neutral-200'}`}></div>
@@ -88,48 +130,7 @@ export default function NotificationView() {
         </DialogContent>
 
       </Dialog>
-    )
-  }
-
-  return (
-    <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <Button className="relative" variant="outline" size="icon">
-          <div className={`absolute -top-2 -right-1 h-3 w-3 rounded-full my-1 ${notifications.find((x: any) => x.read === true) ? 'bg-green-500' : 'bg-neutral-200'}`}></div>
-          <div className={`absolute -top-2 -right-1 h-3 w-3 rounded-full my-1 ${notifications.find((x: any) => x.read === true) ? 'bg-green-500 animate-ping' : 'bg-neutral-200'}`}></div>
-          <BellIcon className="h-4 w-4" />
-        </Button>
-      </DrawerTrigger>
-      <DrawerContent>
-        <DrawerHeader className="text-left">
-          <DrawerTitle>Notifications</DrawerTitle>
-          <DrawerDescription>
-            3 most recent notifications (edit this in settings)
-          </DrawerDescription>
-        </DrawerHeader>
-        <div className="w-full p-2">
-          {notifications.map((item: any, key: number) => (
-            <div key={key} className="py-2 px-3 cursor-pointer hover:bg-secondary transition flex items-start gap-2 rounded-lg">
-              <div className={`h-3 w-3 min-h-3 min-w-3 block rounded-full my-4 ${!item.read ? 'bg-green-500' : 'bg-neutral-200'}`}></div>
-              <div>
-                <p className="text-xs text-neutral-500">{item.date}</p>
-                <p className="font-[500] text-sm grow">{item.title}</p>
-                <p className="text-xs text-neutral-500">{item.desc}</p>
-              </div>
-            </div>
-          ))}
-          <Link href={'/notifications'} className="">
-            <div className="py-2 px-3 cursor-pointer hover:bg-secondary rounded-lg transition text-primary hover:underline hover:underline-offset-4">
-                See all notifications
-            </div>
-          </Link>
-        </div>
-        <DrawerFooter className="pt-2">
-          <DrawerClose asChild>
-            <Button variant="outline">Close</Button>
-          </DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
+    </div>
+    </>
   )
 }
