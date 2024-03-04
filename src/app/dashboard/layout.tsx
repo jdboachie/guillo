@@ -10,6 +10,7 @@ import Dashboard from "@/components/dashboard";
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import Header from "@/components/header";
+import MobileHeader from "@/components/mobile/header";
 
 export default function DashboardLayout({
   children, // will be a page or nested layout
@@ -20,7 +21,8 @@ export default function DashboardLayout({
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
-    <section className="w-screen h-screen">
+    <>
+    <section className="w-screen h-screen max-sm:hidden">
       <ResizablePanelGroup
         direction="horizontal"
         className="h-full w-full items-stretch"
@@ -56,5 +58,15 @@ export default function DashboardLayout({
         </ResizablePanel>
       </ResizablePanelGroup>
       </section>
+
+
+      {/* Mobile Layout */}
+      <section className="w-screen h-screen sm:hidden">
+        <main className="h-[calc(100vh-107px)]">
+          {children}
+        </main>
+        <MobileHeader />
+      </section>
+    </>
   )
 }

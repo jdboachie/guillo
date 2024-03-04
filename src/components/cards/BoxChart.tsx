@@ -1720,7 +1720,7 @@ const MyResponsiveBoxPlot = () => {
 }
 
 
-export default function LineChart () {
+export default function BoxChart () {
   return (
     <Card className={`w-full`}>
       <CardHeader>

@@ -10,16 +10,11 @@ import UserItem from './user-item';
 
 export default function Header() {
   return (
-    <div className={cn("flex m-4 rounded-lg h-[70px] justify-end max-sm:justify-between gap-4 p-4 border")}>
-      <div className="hidden max-sm:block">
-        <UserItem />
-      </div>
-      <div className="flex items-center justify-end gap-2">
-        <Command />
-        <NotificationView />
-        <Separator orientation="vertical" className="mx-2" />
-        <ModeToggle />
-      </div>
+    <div className={cn("flex m-2 rounded-lg h-[70px] justify-end gap-4 p-4 border")}>
+      <Command />
+      <NotificationView />
+      <Separator orientation="vertical" className="mx-2" />
+      <ModeToggle />
     </div>
   );
 }

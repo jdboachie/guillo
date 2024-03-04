@@ -45,21 +45,21 @@ export function ModeToggle() {
         size="icon"
         onClick={() => setTheme("light")}
         >
-        <SunIcon className="min-h-[1rem] min-w-[1rem] p-2" />
+        <SunIcon className="h-4 w-4" />
       </Button>
       <Button
         variant={ theme ==="system" ? "secondary": "ghost"}
         size="icon"
         onClick={() => setTheme("system")}
         >
-        <ComputerDesktopIcon className="min-h-[1rem] min-w-[1rem] p-2" />
+        <ComputerDesktopIcon className="h-4 w-4" />
       </Button>
       <Button
         variant={ theme ==="dark" ? "secondary": "ghost"}
         size="icon"
         onClick={() => setTheme("dark")}
         >
-        <MoonIcon className="min-h-[1rem] min-w-[1rem] p-2" />
+        <MoonIcon className="h-4 w-4" />
       </Button>
     </div>
   )

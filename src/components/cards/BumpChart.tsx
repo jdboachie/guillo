@@ -70,7 +70,7 @@ export default function BumpCard () {
         <CardTitle>This year</CardTitle>
         <CardDescription>Yearly sale results</CardDescription>
       </CardHeader>
-      <CardContent className='w-full h-[350px]'>
+      <CardContent className='w-full h-[350px] max-sm:h-[250px]'>
         <BumpGraph />
       </CardContent>
     </Card>
